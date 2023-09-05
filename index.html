@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/bootstrap.min.css" />
+    <style></style>
+  </head>
+  <body>
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col-10 col-xl-8 offset-1 offset-xl-2">
+          <div class="row"><p class="h1" id="device">Comms Device</p></div>
+          <div class="row"><p class="h2" id="status">Status: TBC</p></div>
+          <div class="row">
+            <p class="h2" id="pairing">Pairing Code: TBC</p>
+          </div>
+          <div class="row">
+            <div class="lead" id="pairing_input">
+              <input class="form-control" type="text" placeholder="TBC" />
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="form">
+              <textarea
+                readonly
+                class="form-control"
+                placeholder="Logging output will appear here"
+                id="log_output"
+                style="height: 50vh"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on("init", function (msg) {
+        console.log(msg);
+        if (msg.device) {
+          document.getElementById("device").innerHTML =
+            "Comms Device " + msg.device;
+        }
+        if (msg.status) {
+          document.getElementById("status").innerHTML = "Status: " + msg.status;
+        }
+        if (msg.pairing) {
+          document.getElementById("pairing").innerHTML =
+            "Pairing Code: " + msg.pairing;
+        }
+      });
+      socket.on("stat_msg", function (msg) {
+        let log = msg.log;
+        let current_log = document.getElementById("log_output").value;
+        let n = new Date();
+        let nd = n.toLocaleString();
+        let new_log = nd + "\n" + log + "\n \n" + current_log;
+        current_log = new_log;
+        if (current_log.length > 10000) {
+          current_log = current_log.substring(0, 10000);
+        }
+        document.getElementById("log_output").value = current_log;
+      });
+    </script>
+  </body>
+</html>
