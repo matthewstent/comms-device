@@ -7,6 +7,7 @@ const socket = io(process.env.API_SERVER, { path: process.env.SOCKET_PATH });
 
 let device_obj = {
   id: process.env.DEVICE,
+  type: "device",
   pairing: process.env.PAIRING_CODE,
   status: "disconnected",
   auth: "A",
