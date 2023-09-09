@@ -24,6 +24,9 @@ socket.on("handshake", function (data) {
 socket.on("gui_update", function (data) {
   console.log(data);
 });
+socket.on("establish_connection", function (data) {
+  console.log(data);
+});
 
 function checkAuth(data) {
   if (data.auth == "A") {
