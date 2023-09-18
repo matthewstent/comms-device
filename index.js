@@ -29,12 +29,14 @@ socket.on("establish_connection", async function (data) {
   if (data.type == "webrtc_request_offer") {
     console.log("RECEIVE - request_offer");
     let offer = await webrtc.request_offer();
-    console.log("offer is ", offer);
-
-    socket.emit("establish_connection", { type: "webrtc_return_offer" });
+    socket.emit("establish_connection", {
+      type: "webrtc_return_offer",
+      payload: offer,
+    });
     console.log("EMIT - return_offer");
   } else if (data.type == "webrtc_provide_offer") {
     console.log("RECEIVE - provide_offer");
+    let answer = await webrtc.request_answer(data.payload);
     socket.emit("establish_connection", { type: "webrtc_return_answer" });
     console.log("EMIT - return_answer");
   } else if (data.type == "webrtc_provide_answer") {
