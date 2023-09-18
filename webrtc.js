@@ -20,8 +20,8 @@ module.exports = {
       webrtc_process.stdout.on("data", (rdata) => {
         console.log("webrtc stdout!!!!!");
         console.log(rdata);
-        resolve("senddata");
-        // let senddata = Buffer.from(rdata).toString("base64");
+        let senddata = Buffer.from(rdata).toString("base64");
+        resolve(senddata);
       });
     });
   },
