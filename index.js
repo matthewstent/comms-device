@@ -25,10 +25,10 @@ socket.on("handshake", function (data) {
 socket.on("gui_update", function (data) {
   console.log(data);
 });
-socket.on("establish_connection", function (data) {
+socket.on("establish_connection", async function (data) {
   if (data.type == "webrtc_request_offer") {
     console.log("RECEIVE - request_offer");
-    let offer = webrtc.request_offer();
+    let offer = await webrtc.request_offer();
     console.log("offer is ", offer);
 
     socket.emit("establish_connection", { type: "webrtc_return_offer" });

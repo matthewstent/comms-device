@@ -1,5 +1,5 @@
 module.exports = {
-  request_offer: function () {
+  request_offer: async function () {
     return new Promise((resolve, reject) => {
       const { exec, spawn } = require("child_process");
       // start webrtc-cli
