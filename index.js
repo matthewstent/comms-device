@@ -29,7 +29,7 @@ socket.on("establish_connection", function (data) {
   if (data.type == "webrtc_request_offer") {
     console.log("RECEIVE - request_offer");
     let offer = webrtc.request_offer();
-    console.log(offer);
+    console.log("offer is ", offer);
 
     socket.emit("establish_connection", { type: "webrtc_return_offer" });
     console.log("EMIT - return_offer");
