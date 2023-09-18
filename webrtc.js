@@ -25,6 +25,7 @@ module.exports = {
   },
 
   request_answer: async function (offer) {
+    console.log("request answer method");
     return new Promise((resolve, reject) => {
       const { exec, spawn } = require("child_process");
       // start webrtc-cli
@@ -39,6 +40,7 @@ module.exports = {
         }
       );
       console.log("writing in to webrtc - ");
+      console.log("offer is... ", offer);
       webrtc_process.stdin.write(offer);
       webrtc_process.stdin.end();
 
