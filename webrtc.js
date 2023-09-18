@@ -18,7 +18,7 @@ module.exports = {
       //   webrtc_process.stdin.end();
 
       webrtc_process.stdout.on("data", (rdata) => {
-        let senddata = Buffer.from(rdata).toString("utf8");
+        let senddata = Buffer.from(rdata).toString();
         resolve(senddata);
       });
     });
