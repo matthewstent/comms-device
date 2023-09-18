@@ -18,9 +18,7 @@ module.exports = {
       //   webrtc_process.stdin.end();
 
       webrtc_process.stdout.on("data", (rdata) => {
-        console.log("webrtc stdout!!!!!");
-        console.log(rdata);
-        let senddata = Buffer.from(rdata).toString("base64");
+        let senddata = Buffer.from(rdata).toString("utf8");
         resolve(senddata);
       });
     });
