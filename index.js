@@ -37,7 +37,10 @@ socket.on("establish_connection", async function (data) {
   } else if (data.type == "webrtc_provide_offer") {
     console.log("RECEIVE - provide_offer");
     let answer = await webrtc.request_answer(data.payload);
-    socket.emit("establish_connection", { type: "webrtc_return_answer" });
+    socket.emit("establish_connection", {
+      type: "webrtc_return_answer",
+      payload: answer,
+    });
     console.log("EMIT - return_answer");
   } else if (data.type == "webrtc_provide_answer") {
     console.log("RECEIVE - provide_answer");
