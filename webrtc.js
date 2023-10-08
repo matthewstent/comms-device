@@ -88,28 +88,30 @@ module.exports = {
       //     shell: true,
       //   }
       // );
-      // console.log("writing in to webrtc - ");
+
+      console.log("writing in to webrtc - ");
       // console.log("offer is... ", offer);
-      // webrtc_process.stdin.write(offer);
-      // webrtc_process.stdin.end();
-      // webrtc_process.stdout.on("data", (rdata) => {
-      //   console.log("waiting for answer?");
-      //   let senddata = Buffer.from(rdata).toString();
-      //   console.log("**********************************************");
-      //   console.log("**********************************************");
-      //   console.log("**********************************************");
-      //   console.log(" ");
-      //   console.log(" ");
-      //   console.log(" ");
-      //   console.log(senddata);
-      //   console.log(" ");
-      //   console.log(" ");
-      //   console.log(" ");
-      //   console.log("**********************************************");
-      //   console.log("**********************************************");
-      //   console.log("**********************************************");
-      //   resolve(senddata);
-      // });
+      webrtc_process.stdin.write(answer);
+      webrtc_process.stdin.end();
+      webrtc_process.stdout.on("data", (rdata) => {
+        //   console.log("waiting for answer?");
+        let senddata = Buffer.from(rdata).toString();
+        console.log(senddata);
+        //   console.log("**********************************************");
+        //   console.log("**********************************************");
+        //   console.log("**********************************************");
+        //   console.log(" ");
+        //   console.log(" ");
+        //   console.log(" ");
+        //   console.log(senddata);
+        //   console.log(" ");
+        //   console.log(" ");
+        //   console.log(" ");
+        //   console.log("**********************************************");
+        //   console.log("**********************************************");
+        //   console.log("**********************************************");
+        //   resolve(senddata);
+      });
     });
   },
 };
