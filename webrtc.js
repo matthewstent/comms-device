@@ -46,9 +46,10 @@ module.exports = {
 
       webrtc_process.stdout.on("data", (rdata) => {
         console.log("waiting for answer?");
-        console.log(rdata);
-        // let senddata = Buffer.from(rdata).toString();
-        // resolve(senddata);
+
+        let senddata = Buffer.from(rdata).toString();
+        console.log(senddata);
+        resolve(senddata);
       });
     });
   },
