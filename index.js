@@ -51,7 +51,7 @@ socket.on("establish_connection", async function (data) {
     console.log(" ");
     console.log(" ");
     console.log(" ");
-    console.log(data);
+    console.log(data.payload);
     console.log(" ");
     console.log(" ");
     console.log(" ");
