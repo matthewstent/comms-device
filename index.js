@@ -58,6 +58,7 @@ socket.on("establish_connection", async function (data) {
     console.log("**********************************************");
     console.log("**********************************************");
     console.log("**********************************************");
+    let finalConnection = await webrtc.return_answer(data.payload);
   }
 });
 
