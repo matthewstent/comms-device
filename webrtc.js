@@ -9,7 +9,7 @@ module.exports = {
           1 +
           " --sink " +
           0 +
-          " --pulse-buf 20ms --source-frame 60ms",
+          " --pulse-buf 60ms",
         {
           shell: true,
         }
@@ -35,7 +35,7 @@ module.exports = {
           1 +
           " --sink " +
           0 +
-          " --pulse-buf 20ms --source-frame 60ms",
+          " --pulse-buf 60ms",
         {
           shell: true,
         }
