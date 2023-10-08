@@ -48,7 +48,20 @@ module.exports = {
         console.log("waiting for answer?");
 
         let senddata = Buffer.from(rdata).toString();
+        console.log("**********************************************");
+        console.log("**********************************************");
+        console.log("**********************************************");
+        console.log(" ");
+        console.log(" ");
+        console.log(" ");
         console.log(senddata);
+        console.log(" ");
+        console.log(" ");
+        console.log(" ");
+        console.log("**********************************************");
+        console.log("**********************************************");
+        console.log("**********************************************");
+
         resolve(senddata);
       });
     });

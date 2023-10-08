@@ -41,6 +41,19 @@ socket.on("establish_connection", async function (data) {
     console.log("EMIT - return_answer");
   } else if (data.type == "webrtc_provide_answer") {
     console.log("RECEIVE - provide_answer");
+    console.log("**********************************************");
+    console.log("**********************************************");
+    console.log("**********************************************");
+    console.log(" ");
+    console.log(" ");
+    console.log(" ");
+    console.log(data.payload);
+    console.log(" ");
+    console.log(" ");
+    console.log(" ");
+    console.log("**********************************************");
+    console.log("**********************************************");
+    console.log("**********************************************");
   }
 });
 
