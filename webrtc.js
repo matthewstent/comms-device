@@ -8,8 +8,8 @@ module.exports = {
         "webrtc-cli --offer --source " +
           1 +
           " --sink " +
-          1 +
-          " --pulse-buf 20ms --source-frame 10ms",
+          0 +
+          " --pulse-buf 20ms --source-frame 60ms",
         {
           shell: true,
         }
@@ -34,8 +34,8 @@ module.exports = {
         "webrtc-cli --answer --source " +
           1 +
           " --sink " +
-          1 +
-          " --pulse-buf 20ms --source-frame 10ms",
+          0 +
+          " --pulse-buf 20ms --source-frame 60ms",
         {
           shell: true,
         }
