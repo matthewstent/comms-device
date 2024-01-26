@@ -27,6 +27,7 @@ export default {
     //   resolve(senddata);
     // });
     console.log("doing execa");
+    console.log(cmdflags);
     const { stdout } = await execa("webrtc-cli", cmdflags);
     console.log("done execa");
     console.log(stdout);
