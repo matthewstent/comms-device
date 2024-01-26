@@ -24,7 +24,11 @@ export default {
 
       webrtc_process.stdout.on("data", (rdata) => {
         let senddata = Buffer.from(rdata).toString();
+        console.log("***********************************");
+        console.log("***********************************");
         console.log(senddata);
+        console.log("***********************************");
+        console.log("***********************************");
         resolve(senddata);
       });
 
