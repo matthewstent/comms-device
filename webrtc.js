@@ -26,13 +26,12 @@ export default {
     //   let senddata = Buffer.from(rdata).toString();
     //   resolve(senddata);
     // });
+    let s = new WritableStream();
     console.log("doing execa");
     console.log(cmdflags);
-    const { stdout } = await execa("webrtc-cli", cmdflags).stdout.pipe(
-      process.stdout
-    );
+    const { stdout } = await execa("webrtc-cli", cmdflags).stdout.pipe(s);
 
-    process.stdout.on("data", function (data) {
+    s.stdout.on("data", function (data) {
       console.log("data start!", data, "data end!!");
     });
     console.log("done execa");
