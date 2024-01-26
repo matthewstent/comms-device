@@ -112,9 +112,10 @@ export default {
       webrtc_process.stdin.write(answer);
       webrtc_process.stdin.end();
       webrtc_process.stdout.on("data", (rdata) => {
-        //   console.log("waiting for answer?");
+        console.log("waiting for answer?");
         let senddata = Buffer.from(rdata).toString();
         console.log(senddata);
+        console.log("?");
         //   console.log("**********************************************");
         //   console.log("**********************************************");
         //   console.log("**********************************************");
