@@ -108,7 +108,7 @@ export default {
       // );
 
       console.log("writing in to webrtc - ");
-      // console.log("offer is... ", offer);
+      console.log("answer is... ", answer);
       webrtc_process.stdin.write(answer);
       webrtc_process.stdin.end();
       webrtc_process.stdout.on("data", (rdata) => {
