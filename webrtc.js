@@ -28,9 +28,11 @@ export default {
     // });
     console.log("doing execa");
     console.log(cmdflags);
-    const { stdout } = await execa("webrtc-cli", cmdflags);
+    const { stdout } = await execa("webrtc-cli", cmdflags).stdout.pipe(
+      process.stdout
+    );
     console.log("done execa");
-    console.log(stdout);
+    console.log("???", stdout);
     console.log("*^^^^^*");
 
     // });
