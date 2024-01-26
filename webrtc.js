@@ -47,7 +47,6 @@ export default {
   request_answer: async function (offer) {
     console.log("request answer method");
     return new Promise((resolve, reject) => {
-      const { exec, spawn } = require("child_process");
       // start webrtc-cli
       webrtc_process = spawn(
         "webrtc-cli --answer --source " +
