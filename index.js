@@ -5,7 +5,8 @@ import { io } from "socket.io-client";
 
 const socket = io(process.env.API_SERVER, { path: process.env.SOCKET_PATH });
 //const webrtc = require(__dirname + "/webrtc.js");
-import * as webrtc from "./webrtc.js";
+import webrtc from "./webrtc.js";
+console.log(webrtc);
 let device_obj = {
   id: process.env.DEVICE,
   type: "device",
@@ -36,6 +37,7 @@ socket.on("gui_update", function (data) {
 socket.on("establish_connection", async function (data) {
   if (data.type == "webrtc_request_offer") {
     console.log("RECEIVE - request_offer");
+    console.log(data);
     let offer = await webrtc.request_offer();
     socket.emit("establish_connection", {
       type: "webrtc_return_offer",

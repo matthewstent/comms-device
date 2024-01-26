@@ -1,31 +1,38 @@
 let webrtc_process = "";
-let webrtc = {
+import { execa } from "execa";
+
+export default {
   request_offer: async function () {
-    return new Promise((resolve, reject) => {
-      const { exec, spawn } = require("child_process");
-      // start webrtc-cli
-      webrtc_process = spawn(
-        "webrtc-cli --offer --source " +
-          1 +
-          " --sink " +
-          0 +
-          " --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay",
+    let cmdflags = ["--offer", "--source", "1", "--sink", "0"];
+    // return new Promise((resolve, reject) => {
 
-        {
-          shell: true,
-        }
-      );
-      //   console.log("writing in to webrtc - ");
-      //   webrtc_process.stdin.write(offer);
-      //   webrtc_process.stdin.end();
+    // // start webrtc-cli
+    // webrtc_process = spawn(
+    //   "webrtc-cli --offer --source " +
+    //     1 +
+    //     " --sink " +
+    //     0 +
+    //     " --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay",
 
-      webrtc_process.stdout.on("data", (rdata) => {
-        let senddata = Buffer.from(rdata).toString();
-        resolve(senddata);
-      });
-    });
+    //   {
+    //     shell: true,
+    //   }
+    // );
+    // //   console.log("writing in to webrtc - ");
+    // //   webrtc_process.stdin.write(offer);
+    // //   webrtc_process.stdin.end();
+
+    // webrtc_process.stdout.on("data", (rdata) => {
+    //   let senddata = Buffer.from(rdata).toString();
+    //   resolve(senddata);
+    // });
+
+    const { stdout } = await execa("webrtc-cli", cmdflags);
+    console.log(stdout);
+    console.log("*^^^^^*");
+
+    // });
   },
-
   request_answer: async function (offer) {
     console.log("request answer method");
     return new Promise((resolve, reject) => {
@@ -116,5 +123,3 @@ let webrtc = {
     });
   },
 };
-
-export default webrtc;
