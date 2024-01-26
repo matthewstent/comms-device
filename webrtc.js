@@ -2,8 +2,8 @@ let webrtc_process = "";
 import { execa } from "execa";
 
 export default {
-  request_offer: async function () {
-    let cmdflags = ["--offer", "--source", "1", "--sink", "0"];
+  request_offer: async function (sink, source) {
+    let cmdflags = ["--offer", "--source", source, "--sink", sink];
     // return new Promise((resolve, reject) => {
 
     // // start webrtc-cli
@@ -26,8 +26,9 @@ export default {
     //   let senddata = Buffer.from(rdata).toString();
     //   resolve(senddata);
     // });
-
+    console.log("doing execa");
     const { stdout } = await execa("webrtc-cli", cmdflags);
+    console.log("done execa");
     console.log(stdout);
     console.log("*^^^^^*");
 
