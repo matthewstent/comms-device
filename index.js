@@ -1,24 +1,32 @@
-require("dotenv").config();
-
+import "dotenv/config";
+import { list } from "pactljson";
 const gui_port = process.env.GUI_PORT;
-const { io } = require("socket.io-client");
+import { io } from "socket.io-client";
 
 const socket = io(process.env.API_SERVER, { path: process.env.SOCKET_PATH });
-const webrtc = require(__dirname + "/webrtc.js");
-
+//const webrtc = require(__dirname + "/webrtc.js");
+import * as webrtc from "./webrtc.js";
 let device_obj = {
   id: process.env.DEVICE,
   type: "device",
   pairing: process.env.PAIRING_CODE,
   status: "disconnected",
   auth: "A",
+  sinks: [],
+  sources: [],
 };
 
-socket.on("handshake", function (data) {
+socket.on("handshake", async function (data) {
   let a = checkAuth(data);
   if (a == true) {
-    device_obj.status = "connected";
-    socket.emit("handshake_response", device_obj);
+    await getSources().then(async (sources) => {
+      await getSinks().then((sinks) => {
+        device_obj.status = "connected";
+        device_obj.sources = sources;
+        device_obj.sinks = sinks;
+        socket.emit("handshake_response", device_obj);
+      });
+    });
   }
 });
 
@@ -68,4 +76,16 @@ function checkAuth(data) {
   } else {
     return false;
   }
+}
+
+async function getSources() {
+  const sourcesObj = await list({ type: "sources" });
+  const sourcesJson = JSON.stringify(sourcesObj, null, "  ");
+  return sourcesJson;
+}
+
+async function getSinks() {
+  const sinksObj = await list({ type: "sinks" });
+  const sinksJson = JSON.stringify(sinksObj, null, "  ");
+  return sinksJson;
 }

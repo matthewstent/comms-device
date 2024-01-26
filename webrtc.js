@@ -1,5 +1,5 @@
 let webrtc_process = "";
-module.exports = {
+let webrtc = {
   request_offer: async function () {
     return new Promise((resolve, reject) => {
       const { exec, spawn } = require("child_process");
@@ -116,3 +116,5 @@ module.exports = {
     });
   },
 };
+
+export default webrtc;
