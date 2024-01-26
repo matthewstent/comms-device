@@ -31,7 +31,10 @@ export default {
     const { stdout } = await execa("webrtc-cli", cmdflags).stdout.pipe(
       process.stdout
     );
-    process.stdout.on("data", console.log("data start!", data, "data end!!"));
+
+    process.stdout.on("data", function (data) {
+      console.log("data start!", data, "data end!!");
+    });
     console.log("done execa");
     console.log("???", stdout);
     console.log("*^^^^^*");
