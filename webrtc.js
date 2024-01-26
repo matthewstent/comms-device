@@ -13,7 +13,7 @@ export default {
         //   " --sink " +
         //   0 +
         //   " --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay",
-        `webrtc-cli --offer --source ${source} --sink ${sink}`,
+        `webrtc-cli --offer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms`,
         {
           shell: true,
         }
@@ -44,16 +44,12 @@ export default {
       // console.log("*^^^^^*");
     });
   },
-  request_answer: async function (offer) {
+  request_answer: async function (offer, sink, source) {
     console.log("request answer method");
     return new Promise((resolve, reject) => {
       // start webrtc-cli
       webrtc_process = spawn(
-        "webrtc-cli --answer --source " +
-          1 +
-          " --sink " +
-          0 +
-          " --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay",
+        `webrtc-cli --answer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms`,
         {
           shell: true,
         }

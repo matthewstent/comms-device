@@ -46,7 +46,11 @@ socket.on("establish_connection", async function (data) {
     console.log("EMIT - return_offer");
   } else if (data.type == "webrtc_provide_offer") {
     console.log("RECEIVE - provide_offer");
-    let answer = await webrtc.request_answer(data.payload);
+    let answer = await webrtc.request_answer(
+      data.payload,
+      data.sink,
+      data.source
+    );
     console.log("answer is..... ", answer.substr(0, 50));
     socket.emit("establish_connection", {
       type: "webrtc_return_answer",
