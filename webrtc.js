@@ -13,7 +13,8 @@ export default {
         //   " --sink " +
         //   0 +
         //   " --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay",
-        `webrtc-cli --offer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms --mode lowdelay`,
+        // `webrtc-cli --offer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms --mode lowdelay`,
+        `webrtc-cli --offer --source ${source} --sink ${sink}  --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay`,
         {
           shell: true,
         }
@@ -49,7 +50,9 @@ export default {
     return new Promise((resolve, reject) => {
       // start webrtc-cli
       webrtc_process = spawn(
-        `webrtc-cli --answer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms --mode lowdelay`,
+        // `webrtc-cli --answer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms --mode lowdelay`,
+        `webrtc-cli --answer --source ${source} --sink ${sink} --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay`,
+
         {
           shell: true,
         }
