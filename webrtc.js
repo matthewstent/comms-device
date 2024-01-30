@@ -14,7 +14,7 @@ export default {
         //   0 +
         //   " --pulse-buf 60ms --source-frame 60ms --sink-frame 60ms --jitter-buf 180ms --mode lowdelay",
         // `webrtc-cli --offer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms --mode lowdelay`,
-        `webrtc-cli --offer --source ${source} --sink ${sink}  --pulse-buf 20ms --source-frame 20ms --sink-frame 20ms --jitter-buf 180ms --mode voip`,
+        `webrtc-cli --offer --source ${source} --sink ${sink}  --pulse-buf 20ms --source-frame 20ms --sink-frame 20ms --jitter-buf 60ms --mode voip`,
         {
           shell: true,
         }
@@ -51,7 +51,7 @@ export default {
       // start webrtc-cli
       webrtc_process = spawn(
         // `webrtc-cli --answer --source ${source} --sink ${sink} --pulse-buf 20ms --source-frame 10ms --mode lowdelay`,
-        `webrtc-cli --answer --source ${source} --sink ${sink}  --pulse-buf 20ms --source-frame 20ms --sink-frame 20ms --jitter-buf 180ms --mode voip`,
+        `webrtc-cli --answer --source ${source} --sink ${sink}  --pulse-buf 20ms --source-frame 20ms --sink-frame 20ms --jitter-buf 60ms --mode voip`,
 
         {
           shell: true,
